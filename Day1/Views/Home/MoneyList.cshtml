@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Day1.Models.Money>
+@{ 
+    Layout = null;
+}
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.seqno)</th>
+            <th>@Html.DisplayNameFor(model => model.category)</th>
+            <th>@Html.DisplayNameFor(model => model.date)</th>
+            <th>@Html.DisplayNameFor(model => model.amount)</th>
+            <th>@Html.DisplayNameFor(model => model.remark)</th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.seqno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.remark)
+            </td>
+            </tr>
+        }
+    </table>
