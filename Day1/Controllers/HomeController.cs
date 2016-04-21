@@ -9,6 +9,7 @@ namespace Day1.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             return View();
@@ -27,34 +28,35 @@ namespace Day1.Controllers
 
             return View();
         }
-        //public ActionResult MoneyList()
-        //{
-        //    var lstMoney = new List<Money>();
-        //    for (int i = 0; i < 5; i++) { 
-        //        lstMoney.Add(new Money
-        //        {
-        //            seqno = 1 + i,
-        //            category = "支出",
-        //            amount = 100 * i,
-        //            date = DateTime.Now.AddDays(1 * i),
-        //            remark = "鉛筆"
-        //        });
-        //    }
-        //    return View(lstMoney);
-        //}
+
         public ActionResult MoneyList()
         {
             var modelView = new List<Money>();
-            for (int i = 0; i < 5; i++)
+
+            using (var db = new SkillTreeHomeworkEntities())
             {
-                modelView.Add(new Money
-                {
-                    seqno = 1 + i,
-                    category = "支出",
-                    amount = 100 * i + 2,
-                    date = DateTime.Now.AddDays(1 * i),
-                    remark = "鉛筆"
-                });
+                modelView = (from a in db.AccountBook
+                             where a.Remarkkk.Length < 10
+                             orderby a.Dateee descending
+                             select new Money
+                             {
+                                 id = a.Id.ToString(),
+                                 amount =a.Amounttt,
+                                 category = a.Categoryyy ,
+                                 remark= a.Remarkkk
+                             }                            
+                    ).Take(5).ToList();
+                //foreach (AccountBook a in ab)
+                //{
+                //    modelView.Add(new Money
+                //    {
+                //        id= a.Id.ToString(),
+                //        category = a.Categoryyy == 0 ? "支出" : (a.Categoryyy == 1 ? "收入" : a.Categoryyy.ToString()),
+                //        amount = a.Amounttt,
+                //        date = a.Dateee,
+                //        remark = a.Remarkkk
+                //    });
+                //}
             }
             return View(modelView);
         }

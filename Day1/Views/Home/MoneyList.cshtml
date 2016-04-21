@@ -4,8 +4,8 @@
 }
     <table class="table">
         <tr>
-            <th>@Html.DisplayNameFor(model => model.seqno)</th>
-            <th>@Html.DisplayNameFor(model => model.category)</th>
+            <th>@Html.DisplayNameFor(model => model.id)</th>
+            <th>@Html.DisplayNameFor(model => model.categorydesc)</th>
             <th>@Html.DisplayNameFor(model => model.date)</th>
             <th>@Html.DisplayNameFor(model => model.amount)</th>
             <th>@Html.DisplayNameFor(model => model.remark)</th>
@@ -13,10 +13,10 @@
         @foreach(var item in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.seqno)
+                <td>@Html.DisplayFor(modelItem => item.id)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.category)
+                    @Html.DisplayFor(modelItem => item.categorydesc)
             </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.date)

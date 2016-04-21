@@ -9,10 +9,18 @@ namespace Day1.Models
     public class Money
     {
         [DisplayName("序號")]
-        public int seqno { get; set; }
+        public string id { get; set; }
 
         [DisplayName("類別")]
-        public string category { get; set; }
+        public string categorydesc {
+            get
+            {
+                return (this.category == 0 ? "收入" :
+                        this.category == 1 ? "支出" : "error");      
+            }
+        }
+        
+        public int category { get; set; }
         [DisplayName("日期")]
         public DateTime date { get; set; }
         [DisplayName("金額")]
@@ -21,8 +29,8 @@ namespace Day1.Models
         public string remark { get; set; }
     }
 
-    public class MoneyViewModel
-    {
-        public IEnumerable<Money> MoneyList { get; set; }    
-    }
+    //public class MoneyViewModel
+    //{
+    //    public IEnumerable<Money> MoneyList { get; set; }    
+    //}
 }
